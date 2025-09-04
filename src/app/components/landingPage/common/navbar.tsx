@@ -25,9 +25,11 @@ export default function Navbar() {
             />
             </div>
 
-            <div className="bg-dark dark:bg-light text-zinc-300 font-primary dark:text-zinc-900 hover:bg-primary transition-all duration-300 hover:text-zinc-50 font-medium px-8 py-3 rounded-full">
+            <Link 
+            href="login"
+            className="bg-dark dark:bg-light text-zinc-300 font-primary dark:text-zinc-900 hover:bg-primary transition-all duration-300 shadow-[0px_4px_2px_rgba(0,0,0,0.2)] active:shadow-[0px_0px_0px_rgba(0,0,0,0.0)] relative active:top-1 hover:text-zinc-50 font-medium px-8 py-3 rounded-full">
                 Register
-            </div>
+            </Link>
             </div>
         </div>
     )

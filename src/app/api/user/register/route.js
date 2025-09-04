@@ -1,5 +1,5 @@
-import connectDB from '@/lib/dbConnection';
-import User from '@/lib/models/User';
+import connectDB from '../../../../lib/dbconnection';
+import User from '../../../../lib/model/userModel';
 import bcrypt from 'bcrypt';
 
 export async function POST(request) {
@@ -8,7 +8,6 @@ export async function POST(request) {
         
         const { username, email, password } = await request.json();
         
-        // Validation
         if (!username || !email || !password) {
             return Response.json(
                 { error: "All fields are mandatory" }, 
@@ -16,7 +15,6 @@ export async function POST(request) {
             );
         }
         
-        // Check if user exists
         const userAvailable = await User.findOne({ email });
         if (userAvailable) {
             return Response.json(
@@ -25,11 +23,9 @@ export async function POST(request) {
             );
         }
         
-        // Hash password
         const hashedPassword = await bcrypt.hash(password, 10);
         console.log("Hashed Password:", hashedPassword);
         
-        // Create user
         const newUser = await User.create({
             username,
             email,

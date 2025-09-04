@@ -24,7 +24,7 @@ export default function Recipe(){
                     placeholder="Enter a Dish"
                     className="px-8 text-left py-5 border-2 font-secondary font-lg  border-stone-500 rounded-xl shadow-[0px_4px_2px_rgba(0,0,0,0.3)] hover:shadow-[0px_0px_0px(0,0,0,0.0)] relative hover:top-1 transition-all duration-50 active:shadow-[0px_0px_0px(0,0,0,0.2)]"
                     />
-                    <div className="bg-primary/[0.7] p-5 rounded-xl font-primary border-2 font-bold text-light border-stone-500 hover:shadow-[0px_4px_2px_rgba(0,0,0,0.3)] active:shadow-[0px_0px_0px(0,0,0,0.0)] hover:-top-1 relative active:top-1 transition-all duration-50">
+                    <div className="bg-primary p-5 rounded-xl font-primary border-2 font-bold text-light border-stone-500 hover:shadow-[0px_4px_2px_rgba(0,0,0,0.3)] active:shadow-[0px_0px_0px(0,0,0,0.0)] hover:-top-1 relative active:top-1 transition-all duration-50">
                         Create
                     </div>
                 </div>

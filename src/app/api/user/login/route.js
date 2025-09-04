@@ -1,5 +1,5 @@
-import connectDB from '@/lib/dbConnection';
-import User from '@/lib/models/User';
+import connectDB from '../../../../lib/dbconnection';
+import User from '../../../../lib/model/userModel';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
