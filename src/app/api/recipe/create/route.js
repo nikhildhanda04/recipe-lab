@@ -1,22 +1,17 @@
-
 import axios from "axios";
 import Recipe from "../../../../lib/model/recipeModel"; // Adjust path as needed
 
-export default async function handler(req, res) {
-
-  if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Method not allowed' });
-  }
-
+export async function POST(req) {
   try {
-    const { title } = req.body;
-    
+    const body = await req.json();
+    const { title } = body;
+
     if (!title) {
-      return res.status(400).json({ message: "Recipe title is required" });
+      return new Response(JSON.stringify({ message: "Recipe title is required" }), { status: 400 });
     }
 
     const prompt = `Generate a JSON object with two keys: "ingredients" (an array of ingredient strings) and "steps" (an array of step strings) for a recipe titled "${title}".`;
-    
+
     const geminiRes = await axios.post(
       'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=' + process.env.GEMINI_API_KEY,
       {
@@ -31,9 +26,9 @@ export default async function handler(req, res) {
     try {
       recipeData = JSON.parse(geminiText);
     } catch {
-      return res.status(500).json({ 
+      return new Response(JSON.stringify({ 
         message: "Failed to parse Gemini API response: " + geminiText 
-      });
+      }), { status: 500 });
     }
 
     const newRecipe = await Recipe.create({
@@ -42,11 +37,11 @@ export default async function handler(req, res) {
       steps: recipeData.steps
     });
 
-    res.status(201).json(newRecipe);
+    return new Response(JSON.stringify(newRecipe), { status: 201 });
 
   } catch (error) {
-    res.status(500).json({ 
+    return new Response(JSON.stringify({ 
       message: "Gemini API error: " + error.message 
-    });
+    }), { status: 500 });
   }
 }
