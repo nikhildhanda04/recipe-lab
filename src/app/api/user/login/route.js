@@ -8,19 +8,18 @@ export async function POST(request) {
         await connectDB();
         
         const { email, password } = await request.json();
+        // console.log();
         
-        // Validation
+        
         if (!email || !password) {
-            return Response.json(
-                { error: "All fields are mandatory" }, 
-                { status: 400 }
+            return new Response(
+                JSON.stringify({ error: "All fields are mandatory" }),
+                { status: 400, headers: { "Content-Type": "application/json" } }
             );
         }
         
-        // Find user
         const user = await User.findOne({ email });
         
-        // Check user and password
         if (user && (await bcrypt.compare(password, user.password))) {
             const accessToken = jwt.sign({
                 user: {
@@ -30,22 +29,22 @@ export async function POST(request) {
                 }
             }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "1d" });
             
-            return Response.json(
-                { accessToken }, 
-                { status: 200 }
+            return new Response(
+                JSON.stringify({ accessToken }),
+                { status: 200, headers: { "Content-Type": "application/json" } }
             );
         } else {
-            return Response.json(
-                { error: "Email or Password is not valid" }, 
-                { status: 401 }
+            return new Response(
+                JSON.stringify({ error: "Email or Password is not valid" }),
+                { status: 401, headers: { "Content-Type": "application/json" } }
             );
         }
         
     } catch (error) {
         console.error("Login error:", error);
-        return Response.json(
-            { error: error.message || "Internal server error" }, 
-            { status: 500 }
+        return new Response(
+            JSON.stringify({ error: error.message || "Internal server error" }),
+            { status: 500, headers: { "Content-Type": "application/json" } }
         );
     }
 }

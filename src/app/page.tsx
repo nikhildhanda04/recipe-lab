@@ -1,8 +1,8 @@
-import Navbar from "./components/landingPage/common/navbar";
+import Navbar from "./components/common/navbar";
 import Hero from "./components/landingPage/landingPage/hero";
 import Features from "./components/landingPage/landingPage/features";
 import Cta from "./components/landingPage/landingPage/cta";
-import Footer from "./components/landingPage/common/footer";
+import Footer from "./components/common/footer";
 
 
 export default function Home() {

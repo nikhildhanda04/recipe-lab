@@ -4,46 +4,49 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link'
 
-export default function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-  const router = useRouter();
 
-const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  setLoading(true);
-  setError('');
+export default function Register(){
 
-    try {
-      const response = await fetch('/api/user/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      });
-      // console.log({ email, password });
-
-      const data = await response.json();
-
-      if (response.ok) {
-
-        localStorage.setItem('accessToken', data.accessToken);
-        
-        router.push('/');
-        
-      } else {
-        setError(data.error || 'Login failed');
-      }
-    } catch (error) {
-      console.error('Login error:', error);
-      setError('Network error. Please try again.');
-    } finally {
-      setLoading(false);
-    }
-  };
+      const [email, setEmail] = useState('');
+      const [username, setUsername] = useState('');
+      const [password, setPassword] = useState('');
+      const [loading, setLoading] = useState(false);
+      const [error, setError] = useState('');
+      const router = useRouter();
+    
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      setLoading(true);
+      setError('');
+    
+        try {
+          const response = await fetch('/api/user/register', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username,email, password }),
+          });
+          // console.log({ email, password });
+    
+          const data = await response.json();
+    
+          if (response.ok) {
+    
+            localStorage.setItem('accessToken', data.accessToken);
+            
+            router.push('/');
+            
+          } else {
+            setError(data.error || 'Register failed');
+          }
+        } catch (error) {
+          console.error('Login error:', error);
+          setError('Network error. Please try again.');
+        } finally {
+          setLoading(false);
+        }
+      };
 
   return (
     <>
@@ -63,10 +66,10 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         >
           <div className="flex flex-col gap-2">
             <div className="font-primary text-3xl font-bold ">
-              Log In
+              Create Account
             </div>
             <div className='font-primary '>
-              New User? <Link href="/register"  className='text-blue-700 hover:underline cursor-pointer'>Create Account</Link>
+              Old User? <Link href="/login" className='text-blue-700 hover:underline cursor-pointer'>Log In</Link>
             </div>
           </div>
 
@@ -75,6 +78,19 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
               {error}
             </div>
           )}
+            <div className="w-full">
+            <div className='font-primary font-medium mb-1 ml-2'>
+              Username
+            </div>
+            <input
+              type="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Enter your Username"
+              className="px-9 py-4 w-full font-secondary text-zinc-700 bg-white border-2 border-stone-400 rounded-xl focus:border-blue-500 focus:outline-none"
+              required
+            />
+          </div>
 
           <div className="w-full">
             <div className='font-primary font-medium mb-1 ml-2'>
@@ -124,7 +140,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                 : 'bg-primary text-white hover:shadow-[0px_4px_2px_rgba(0,0,0,0.3)] active:shadow-[0px_0px_0px_rgba(0,0,0,0.0)] hover:-translate-y-1 active:translate-y-1'
             }`}
           >
-            {loading ? 'Logging In...' : 'Log In'}
+            {loading ? 'Setting You Up...' : 'Register'}
           </button>
         </form>
       </div>

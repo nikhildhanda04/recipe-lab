@@ -1,9 +1,13 @@
 import axios from "axios";
 import Recipe from "../../../../lib/model/recipeModel"; // Adjust path as needed
+import connectDB from "../../../../lib/dbconnection";  
 
 export async function POST(req) {
   try {
-    const body = await req.json();
+
+        await connectDB();
+        
+        const body = await req.json();
     const { title } = body;
 
     if (!title) {
