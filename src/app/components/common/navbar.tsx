@@ -14,7 +14,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <div className="bg-light/[0.6] fixed dark:bg-[#1e1e1e]/[0.6] backdrop-blur-xl flex flex-row justify-between items-center w-full py-6 px-24">
+    <div className="bg-light/[0.6] fixed dark:bg-[#1e1e1e]/[0.6] backdrop-blur-xl flex flex-row justify-between items-center w-full py-6 px-6 md:px-24">
 
       <Link
         href="/"
@@ -23,7 +23,7 @@ export default function Navbar() {
         Recipe Lab
       </Link>
 
-      <div className="flex flex-row gap-6">
+      <div className=" flex-row hidden  gap-6">
         <div className="font-primary text-lg hover:text-primary text-zinc-800 dark:text-zinc-300 hover:underline underline-offset-4 transition-all duration-300">Find</div>
         <div className="font-primary text-lg hover:text-primary text-zinc-800 dark:text-zinc-300 hover:underline underline-offset-4 transition-all duration-300">Explore</div>
         <div className="font-primary text-lg hover:text-primary text-zinc-800 dark:text-zinc-300 hover:underline underline-offset-4 transition-all duration-300">Queries</div>

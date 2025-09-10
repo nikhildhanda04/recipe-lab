@@ -7,14 +7,15 @@ interface StepsProps {
 export default function Steps({ title, ingredients, steps }: StepsProps) {
   return (
     <>
-      <div className="flex flex-col px-36 tracking-tight gap-12">
+      <div className="flex flex-col px-6 md:px-36 tracking-tight gap-12">
         <div className="font-primary font-bold text-6xl uppercase">
           {title}
         </div>
         <div className="font-primary font-medium text-4xl text-zinc-800">
           Ingredients:
         </div>
-        <div className="grid grid-cols-3 font-secondary text-xl gap-y-5">
+        <div className="grid g
+        -3 font-secondary text-xl gap-y-5">
           {ingredients.map((ingredient, index) => (
             <li key={index}>{ingredient}</li>
           ))}
@@ -22,7 +23,7 @@ export default function Steps({ title, ingredients, steps }: StepsProps) {
         <div className="font-primary font-medium text-4xl text-zinc-800">
           Recipe:
         </div>
-        <div className="font-primary text-xl flex flex-col">
+        <div className="font-primary text-xl leading-loose flex flex-col">
           {steps.map((step, index) => (
             <span key={index} className="mt-2">
               {index + 1}. {step}

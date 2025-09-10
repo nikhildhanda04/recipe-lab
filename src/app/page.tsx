@@ -11,9 +11,18 @@ export default function Home() {
   
    <div className="flex flex-col items-center gap-40">
      <Navbar />
-      <Hero />
-      <Features />
+     <div id="home">
+       <Hero />
+     </div>
+     
+     <div id="features">
+   <Features />
+     </div>
+   
+   <div id="">
       <Cta />
+   </div>
+
       <Footer />
    </div>
    </>

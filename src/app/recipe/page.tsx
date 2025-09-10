@@ -11,10 +11,6 @@ interface RecipeData {
   steps: string[];
 }
 
-
-
-
-
 export default function Recipe() {
   const [dishName, setDishName] = useState("");
   const [isCreating, setIsCreating] = useState(false);
@@ -72,7 +68,7 @@ const [recipeData, setRecipeData] = useState<RecipeData | null>(null);
         </div>
         <div className="flex flex-col items-center gap-16 py-36">
           <div className="flex flex-col items-center">
-            <div className="font-primary items-center mx-auto font-bold tracking-tight text-center text-7xl text-zinc-800 dark:text-zinc-400">
+            <div className="font-primary items-center mx-auto font-bold tracking-tight text-center text-2xl md:text-7xl text-zinc-800 dark:text-zinc-400">
               Start your <span className="text-primary">cooking</span> journey <br/> that never ends.
             </div>
             {/* <div className="text-base font-secondary text-zinc-600">
@@ -81,7 +77,7 @@ const [recipeData, setRecipeData] = useState<RecipeData | null>(null);
           </div>
           
           <div className="flex flex-col items-center gap-4">
-            <div className="flex flex-row items-center gap-6">
+            <div className="flex flex-col md:flex-row items-center gap-6">
               <input
                 value={dishName}
                 onChange={(e) => setDishName(e.target.value)}

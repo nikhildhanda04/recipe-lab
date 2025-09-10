@@ -1,7 +1,7 @@
 export default function Footer(){
     return(
         <>
-        <div className="flex flex-col w-full px-36 py-8 border-t-2 border-stone-500 tracking-tight">
+        <div className="flex flex-col w-full px-6 md:px-36 py-8 border-t-2 border-stone-500 tracking-tight">
 
             <div className="flex flex-row py-12 border-b-2 border-stone-500 justify-between">
 
@@ -13,7 +13,7 @@ export default function Footer(){
                     <div className="font-secondary text-zinc-600">
                         want to drop a review?
                     </div>
-                    <div className="flex flex-row gap-5 items-center">
+                    <div className="flex flex-row gap-2 md:gap-5 items-center">
                         <input 
                         placeholder="send a message" 
                         className="px-7 py-3 rounded-xl border-2 border-stone-600 shadow-[0px_4px_2px_rgba(0,0,0,0.2)] dark:bg-neutral-700"
@@ -25,7 +25,7 @@ export default function Footer(){
 
                 </div>
 
-                <div className="flex flex-row gap-12">
+                <div className="md:flex hidden flex-row gap-12">
 
                     <div className="flex flex-col gap-3">
 
