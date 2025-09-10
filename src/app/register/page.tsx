@@ -50,8 +50,8 @@ export default function Register(){
 
   return (
     <>
-      <div className="flex flex-row gap-12 justify-between max-h-screen items-center w-full px-44 py-44">
-        <div className="flex flex-col gap-6 w-full">
+      <div className="flex flex-row gap-12 justify-between max-h-screen items-center w-full px-2 md:px-44 py-44">
+        <div className="md:flex flex-col hidden gap-6 w-full">
           <div className="font-primary font-bold text-5xl ">
             Fast, Efficient and Delicious
           </div>
